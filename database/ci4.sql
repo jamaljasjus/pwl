@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Jun 2023 pada 18.28
+-- Waktu pembuatan: 29 Jun 2023 pada 23.00
 -- Versi server: 10.4.27-MariaDB
 -- Versi PHP: 8.2.0
 
@@ -41,7 +41,8 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `nama`, `harga`, `jumlah`, `keterangan`, `foto`) VALUES
-(2, 'Surya 16', 32000, 17, 'rokok wenak', 'surya16.jpg');
+(3, 'ROKOK SURYA 16', 32000, 144, 'SURYA ENAK', '1688071510_ed47f056819b7a9d0bda.jpg'),
+(4, 'ROKOK L300', 19000, 12, 'ROKOK RAENAK', '1688071806_074bba11ed2435dc0b2a.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,15 +61,6 @@ CREATE TABLE `transaksi` (
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `transaksi`
---
-
-INSERT INTO `transaksi` (`id`, `username`, `total_harga`, `alamat`, `ongkir`, `status`, `created_by`, `created_date`) VALUES
-(1, 'jamal', 127000, 'Pangkalanbun', 63000, 0, 'jamal', '2023-06-21 16:25:11'),
-(2, 'jamal', 140000, 'Pangkalanbun', 76000, 0, 'jamal', '2023-06-21 16:26:03'),
-(3, 'jamal', 172000, 'Pangkalanbun', 76000, 0, 'jamal', '2023-06-21 16:27:20');
-
 -- --------------------------------------------------------
 
 --
@@ -86,13 +78,6 @@ CREATE TABLE `transaksi_detail` (
   `created_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `transaksi_detail`
---
-
-INSERT INTO `transaksi_detail` (`id`, `id_transaksi`, `id_barang`, `jumlah`, `diskon`, `subtotal_harga`, `created_by`, `created_date`) VALUES
-(2, 3, 2, 3, 0, 96000, 'jamal', '2023-06-21 16:27:20');
-
 -- --------------------------------------------------------
 
 --
@@ -103,15 +88,16 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `role` varchar(25) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `is_aktif` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `role`, `password`) VALUES
-(1, 'jamal', 'admin', '7592628bce37dd14e0b36ea66d5ba847');
+INSERT INTO `user` (`id`, `username`, `role`, `password`, `is_aktif`) VALUES
+(2, 'irza', 'admin', 'b6826409d93be85c5c7c53cb59991930', 1);
 
 --
 -- Indexes for dumped tables
@@ -149,25 +135,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `barang`
 --
 ALTER TABLE `barang`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `transaksi_detail`
 --
 ALTER TABLE `transaksi_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
